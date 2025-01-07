@@ -22,7 +22,7 @@ describe("Click Demo", () => {
 
 
 
-        // invoke
+        // invoke - jquery method
         cy.get('div.mouse-hover-content').invoke('show', {force: true})
         cy.get('div.mouse-hover-content').should('have.css', 'display', 'block')
 

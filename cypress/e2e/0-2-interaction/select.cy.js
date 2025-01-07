@@ -9,6 +9,11 @@ describe("Click Demo", () => {
         cy.get('#carselect').select(['benz'])
         cy.get('#multiple-select-example').select(['apple', 'orange'])
        // expect(true).to.be.true
+       cy.get('#carselect')
+
+       // Select Value With Options
+       cy.get('#carselect').select('benz', {force: true})
+
 
     })
 })
