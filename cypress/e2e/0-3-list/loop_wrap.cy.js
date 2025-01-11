@@ -8,7 +8,7 @@ describe("Click Demo", () => {
             cy.wrap($el).should('contain', itemText)
         })
     
-        // type input => select firstItem => typed to input 
+        // type input => select firstItem => click item 
         cy.get('#autosuggest').then($input => {
             cy.wrap($input).type('Automation')
             return cy.get('[class="ui-corner-all"]')
