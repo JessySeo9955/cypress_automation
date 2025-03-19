@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # You can change the version as per your project's requirement.
+          node-version: '22'  # You can change the version as per your project's requirement.
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -26,6 +26,6 @@ jobs:
 
       # Step 4: Run cypress
       - name: Run Cypress tests
-        run: npx cypress --spec cypress/e2e/0-7-page-object/03_page_object.cy.js --record --key $CYPRESS_RECORD_KEY
+        run: npx cypress run --spec cypress/e2e/0-7-page-object/03_page_object.cy.js --record --key $CYPRESS_RECORD_KEY
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}  # Use your Cypress Record Key from GitHub Secrets
