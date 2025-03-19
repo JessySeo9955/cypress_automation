@@ -1,0 +1,31 @@
+name: Run Cypress Tests on Push to Main
+
+on:
+  push:
+    branches:
+      - main  # This triggers the action on push to the main branch.
+
+jobs:
+  cypress-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # You can change the version as per your project's requirement.
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run cypress
+      - name: Run Cypress tests
+        run: npx cypress --spec cypress/e2e/0-7-page-object/03_page_object.cy.js --record --key $CYPRESS_RECORD_KEY
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}  # Use your Cypress Record Key from GitHub Secrets
